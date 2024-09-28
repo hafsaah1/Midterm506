@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KMeans Clustering</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>KMeans Clustering Algorithm</h1>
+
+    <form action="/run_kmeans" method="post">
+        <label for="k">Number of Clusters (k):</label>
+        <input type="number" name="k" id="k" value="3" min="2">
+        
+        <label for="init_method">Initialization Method:</label>
+        <select name="init_method" id="init_method">
+            <option value="random">Random</option>
+            <option value="farthest_first">Farthest First</option>
+            <option value="kmeans++">KMeans++</option>
+        </select>
+        
+        <button type="submit">Run KMeans</button>
+    </form>
+
+    {% if plot_url %}
+    <h2>Clustering Result</h2>
+    <img src="{{ plot_url }}" alt="KMeans Clustering Result">
+    {% endif %}
+</body>
+</html>
